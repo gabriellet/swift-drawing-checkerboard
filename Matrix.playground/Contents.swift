@@ -12,8 +12,8 @@ class GradientView : UIView {
         let squareGreen = UIColor(red: 20.0/255.0, green: 180.0/255.0, blue: 66.0/255.0, alpha: 1.0).cgColor
         let lineRed = UIColor(red: 150.0/255.0, green: 30.0/255.0, blue: 39.0/255.0, alpha: 1.0).cgColor
         let lineBlue = UIColor(red: 35.0/255.0, green: 80.0/255.0, blue: 145.0/255.0, alpha: 0.6).cgColor
-        let startBlue = UIColor(red: 27.0/255.0, green: 94.0/255.0, blue: 125.0/255.0, alpha: 1.0).cgColor
-        let endBlue = UIColor(red: 44.0/255.0, green: 60.0/255.0, blue: 110.0/255.0, alpha: 1.0).cgColor
+        let startBlue = UIColor(red: 27.0/255.0, green: 94.0/255.0, blue: 125.0/255.0, alpha: 0.5).cgColor
+        let endBlue = UIColor(red: 44.0/255.0, green: 60.0/255.0, blue: 110.0/255.0, alpha: 0.5).cgColor
         
         let locations: [CGFloat] = [0.0, 0.75]
         
@@ -65,11 +65,11 @@ class GradientView : UIView {
             [true, false, false, false, true, false, false, false, false, false, true, false, false, false],
             [false, false, false, false, false, false, false, false, false, false, false, false, false, false],
             [false, false, false, false, false, false, false, false, false, false, true, false, true, true],
-            [true, false, false, false, false, false, false, false, false, false],
-            [true, false, false, false, false, false, false, false, false, false],
-            [true, false, false, false, false, false, true, false, false, false],
-            [true, false, false, false, false, false, false, false, false, false],
-            [true, false, false, false, false, false, false, false, false, false],
+            [true, false, false, false, false, false, false, false, false, false, true, false, false, true],
+            [true, false, false, false, false, false, false, false, false, false, false, false, false, true],
+            [true, true, true, true, true, true, true, true, true, true, true, true, true, true],
+            [true, false, false, false, false, false, true, false, false, false, true, true, true, true],
+            [true, false, false, false, false, false, false, false, false, false, false, false, false, false],
             [true, false, false, false, false, false, false, false, false, false],
             [true, false, false, false, false, false, false, false, false, false],
             [true, false, false, false, false, false, false, false, false, true],
@@ -89,8 +89,8 @@ class GradientView : UIView {
             for j in stride(from: 0.0, to: rect.size.height, by: step) {
                 
                 if filled[iPos][jPos] == true {
-                    print("filled: ", iPos, jPos)
-                    let point = CGPoint(x: rect.origin.x + i + 4.0, y: rect.origin.y + j + 4.0)
+                    print("filled: ", iPos, jPos, "draw: ", i, j)
+                    let point = CGPoint(x: rect.origin.x + j + 4.0, y: rect.origin.y + i + 4.0)
                     context.setShadow(offset: CGSize(width: 0, height: 0), blur: 4.0, color: squareGreen)
                     context.setFillColor(squareGreen)
                     let square = CGRect(x: point.x, y: point.y, width: step - 4.0, height: step - 4.0)
