@@ -59,31 +59,53 @@ class GradientView : UIView {
         
         context.strokePath()
         
+        let filled = [
+            [true, false, true, false, true, false, true, false, true, false, true, false, true, false],
+            [true, true, true, false, false, false, false, false, false, false, true, true, true, false],
+            [true, false, false, false, true, false, false, false, false, false, true, false, false, false],
+            [false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false, false, false, false, true, false, true, true],
+            [true, false, false, false, false, false, false, false, false, false],
+            [true, false, false, false, false, false, false, false, false, false],
+            [true, false, false, false, false, false, true, false, false, false],
+            [true, false, false, false, false, false, false, false, false, false],
+            [true, false, false, false, false, false, false, false, false, false],
+            [true, false, false, false, false, false, false, false, false, false],
+            [true, false, false, false, false, false, false, false, false, false],
+            [true, false, false, false, false, false, false, false, false, true],
+            ]
+        var iPos = 0
+        var jPos = 0
         
-        for i in stride(from: 0.0, to: rect.size.width, by: step * 2.0) {
-            
-            for j in stride(from: 0.0, to: rect.size.height, by: step * 2.0) {
-                
-                let point = CGPoint(x: rect.origin.x + i + 4.0, y: rect.origin.y + j + 4.0)
-                context.setShadow(offset: CGSize(width: 0, height: 0), blur: 4.0, color: squareGreen)
-                context.setFillColor(squareGreen)
-                let square = CGRect(x: point.x, y: point.y, width: step - 4.0, height: step - 4.0)
-                context.addRect(square)
-                
+        for a in 0..<filled.count {
+            for b in 0..<filled[a].count {
+                print(filled[a][b], separator: " ", terminator: "\t")
             }
-            
+            print("\n")
         }
         
-        for i in stride(from: step, to: rect.size.width, by: step * 2.0) {
+        for i in stride(from: 0.0, to: rect.size.width, by: step) {
             
-            for j in stride(from: step, to: rect.size.height, by: step * 2.0) {
+            for j in stride(from: 0.0, to: rect.size.height, by: step) {
                 
-                let point = CGPoint(x: rect.origin.x + i + 4.0, y: rect.origin.y + j + 4.0)
-                context.setShadow(offset: CGSize(width: 0, height: 0), blur: 4.0, color: squareGreen)
-                context.setFillColor(squareGreen)
-                let square = CGRect(x: point.x, y: point.y, width: step - 4.0, height: step - 4.0)
-                context.addRect(square)
+                if filled[iPos][jPos] == true {
+                    print("filled: ", iPos, jPos)
+                    let point = CGPoint(x: rect.origin.x + i + 4.0, y: rect.origin.y + j + 4.0)
+                    context.setShadow(offset: CGSize(width: 0, height: 0), blur: 4.0, color: squareGreen)
+                    context.setFillColor(squareGreen)
+                    let square = CGRect(x: point.x, y: point.y, width: step - 4.0, height: step - 4.0)
+                    context.addRect(square)
+                }
+                print("jPos: ", iPos, jPos)
+                if jPos < filled[iPos].count-1 {
+                    jPos += 1
+                }
                 
+            }
+            jPos = 0
+            print("increment iPos: ", iPos, jPos)
+            if iPos < filled.count-1 {
+                iPos += 1
             }
             
         }
