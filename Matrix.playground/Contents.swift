@@ -60,7 +60,7 @@ class GradientView : UIView {
         context.strokePath()
         
         let filled = [
-            [true, false, true, false, true, false, true, false, true, false, true, false, true, false],
+            [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true],
             [true, true, true, false, false, false, false, false, false, false, true, true, true, false],
             [true, false, false, false, true, false, false, false, false, false, true, false, false, false],
             [false, false, false, false, false, false, false, false, false, false, false, false, false, false],
@@ -84,9 +84,9 @@ class GradientView : UIView {
             print("\n")
         }
         
-        for i in stride(from: 0.0, to: rect.size.width, by: step) {
+        for i in stride(from: 0.0, to: rect.size.height, by: step) {
             
-            for j in stride(from: 0.0, to: rect.size.height, by: step) {
+            for j in stride(from: 0.0, to: rect.size.width, by: step) {
                 
                 if filled[iPos][jPos] == true {
                     print("filled: ", iPos, jPos, "draw: ", i, j)
