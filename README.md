@@ -12,3 +12,5 @@ This draws said terribly garish red, blue and green checkerboard. Uses loops.
 `Matrix.playground`
 An attempt to parameterize which squares are filled in using an array of which positions should be filled. Allows for more complex pattern than just a checkerboard.
 
+`Matrix2.playground`
+Allows grid to be filled in from a larger matrix by scaling down to grid size (if whole number multiple). Replaces garish color scheme with a possibly equally as garish blue and yellow one.
